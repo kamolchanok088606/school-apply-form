@@ -1,314 +1,67 @@
 <!doctype html>
- <link rel="icon" href="favicon.ico">
- <link rel="icon" href="logo.png" type="image/png">
-
 <html lang="th">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>แบบใบสมัครโรงเรียนสาธิตนานาชาติ</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="logo.png" type="image/png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/gh/username/repository/element_sdk.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/username/repository/data_sdk.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/username/repository/data_sdk.js"></script>
+  
   <style>
-    .logo {
-      width: 320px; /* กำหนดความกว้าง */
-      max-width: 90%; /* กำหนดขนาดสูงสุดเป็น 90% ของขนาดหน้าจอ */
-      height: 90px; /* กำหนดความสูง */
-      object-fit: contain; /* ให้รูปไม่ผิดสัดส่วน */
-      display: block; /* ทำให้เป็นบล็อกเลื่อน */
-      margin: 0 auto 14px auto; /* จัดตำแหน่งให้กลาง */
+    /* 2. กำหนดฟอนต์ Sarabun ให้กับทุก Element */
+    body, button, input, select, textarea, .app-wrapper, h1, h2, h3, h4, h5, h6, p, label, div {
+        font-family: 'Sarabun', sans-serif !important;
     }
 
-    body {
-      box-sizing: border-box;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-    }
-
-    .app-wrapper {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #a73824 0%, #d46b59 100%);
-      overflow: auto;
-      padding: 20px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .form-container {
-      max-width: 900px;
-      margin: 0 auto;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-    }
-
-    .form-header {
-      background: linear-gradient(135deg, #a73824 0%, #d46b59 100%);
-      padding: 40px 30px;
-      text-align: center;
-      color: white;
-      border-bottom: 4px solid #FFC107;
-    }
-
-    .form-header h1 {
-      font-size: 26px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .form-header p {
-      font-size: 14px;
-      opacity: 0.95;
-    }
-
-    .form-content {
-      padding: 40px 35px;
-    }
-
-    .section-header {
-      background: #f8f9fa;
-      padding: 12px 16px;
-      border-left: 4px solid #a73824;
-      margin: 30px 0 20px 0;
-      font-size: 15px;
-      font-weight: 600;
-      color: #a73824;
-      text-transform: uppercase;
-      padding-left: 20px; /* เยื้องเพิ่มที่นี่ */
-    }
-
-    .section-header:first-of-type {
-      margin-top: 0;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-bottom: 16px;
-      padding-left: 20px; /* เพิ่มช่องว่างด้านซ้าย */
-    }
-
-    .form-row.full {
-      grid-template-columns: 1fr;
-    }
-
-    .form-row.three {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    label {
-      font-size: 12px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .label-required::after {
-      content: " *";
-      color: #dc3545;
-    }
-
-    input, select, textarea {
-      padding: 10px 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-size: 13px;
-      font-family: inherit;
-      transition: all 0.3s ease;
-      background: #fafafa;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #a73824;
-      background: white;
-      box-shadow: 0 0 0 2px rgba(30, 60, 114, 0.1);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 60px;
-    }
-
-    .checkbox-group, .radio-group {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-
-    .checkbox-item, .radio-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    input[type="checkbox"], input[type="radio"] {
-      width: 16px;
-      height: 16px;
-      cursor: pointer;
-    }
-
-    .checkbox-label, .radio-label {
-      font-size: 13px;
-      cursor: pointer;
-      margin: 0;
-      text-transform: none;
-      letter-spacing: normal;
-    }
-
-    .form-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 35px;
-      padding-top: 20px;
-      border-top: 2px solid #f0f0f0;
-    }
-
-    button {
-      flex: 1;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .btn-submit {
-      background: linear-gradient(135deg, #a73824 0%, #d46b59 100%);
-      color: white;
-      box-shadow: 0 6px 16px rgba(30, 60, 114, 0.3);
-    }
-
-    .btn-submit:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(30, 60, 114, 0.4);
-    }
-
-    .btn-submit:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .btn-reset {
-      background: #f0f0f0;
-      color: #333;
-      flex: 0.5;
-    }
-
-    .btn-reset:hover {
-      background: #e0e0e0;
-    }
-
-    .loading-spinner {
-      display: inline-block;
-      width: 14px;
-      height: 14px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-right: 6px;
-      vertical-align: middle;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .status-message {
-      padding: 12px 14px;
-      border-radius: 6px;
-      margin-bottom: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      display: none;
-    }
-
-    .status-message.show {
-      display: block;
-    }
-
-    .status-message.success {
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-    }
-
-    .status-message.error {
-      background: #f8d7da;
-      color: #721c24;
-      border: 1px solid #f5c6cb;
-    }
-
-    .note {
-      font-size: 12px;
-      color: #666;
-      margin-top: 4px;
-      font-style: italic;
-    }
-
-    @media (max-width: 768px) {
-      .form-row, .form-row.three {
-        grid-template-columns: 1fr;
-        gap: 15px;
-      }
-
-      .form-container {
-        margin: 15px auto;
-        border-radius: 8px;
-      }
-
-      .form-header {
-        padding: 25px 15px;
-      }
-
-      .form-header h1 {
-        font-size: 22px;
-      }
-
-      .form-content {
-        padding: 25px 15px;
-      }
-
-      .form-actions {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
-
-      .btn-reset {
-        flex: 1;
-      }
-
-      .checkbox-group, .radio-group {
-        gap: 12px;
-      }
-    }
+    .logo { width: 320px; max-width: 90%; height: 90px; object-fit: contain; display: block; margin: 0 auto 14px auto; }
+    body { box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; width: 100%; }
+    .app-wrapper { width: 100%; height: 100%; background: linear-gradient(135deg, #a73824 0%, #d46b59 100%); overflow: auto; padding: 20px; }
+    .form-container { max-width: 900px; margin: 0 auto; background: white; border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); overflow: hidden; }
+    .form-header { background: linear-gradient(135deg, #a73824 0%, #d46b59 100%); padding: 40px 30px; text-align: center; color: white; border-bottom: 4px solid #FFC107; }
+    .form-header h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; } /* ปรับขนาดตัวอักษรหัวข้อเพิ่มเล็กน้อยเพื่อให้สมส่วนกับ Sarabun */
+    .form-header p { font-size: 16px; opacity: 0.95; }
+    .form-content { padding: 40px 35px; }
+    .section-header { background: #f8f9fa; padding: 12px 16px; border-left: 4px solid #a73824; margin: 30px 0 20px 0; font-size: 16px; font-weight: 600; color: #a73824; text-transform: uppercase; padding-left: 20px; }
+    .section-header:first-of-type { margin-top: 0; }
+    .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 16px; padding-left: 20px; }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-row.three { grid-template-columns: repeat(3, 1fr); }
+    .form-group { display: flex; flex-direction: column; }
+    
+    label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px; }
+    
+    .label-required::after { content: " *"; color: #dc3545; }
+    input, select, textarea { padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 15px; /* ปรับขนาด Input ให้อ่านง่ายขึ้นในฟอนต์ Sarabun */ transition: all 0.3s ease; background: #fafafa; }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: #a73824; background: white; box-shadow: 0 0 0 2px rgba(30, 60, 114, 0.1); }
+    textarea { resize: vertical; min-height: 60px; }
+    .checkbox-group, .radio-group { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 6px; }
+    .checkbox-item, .radio-item { display: flex; align-items: center; gap: 6px; }
+    input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; cursor: pointer; }
+    .checkbox-label, .radio-label { font-size: 15px; cursor: pointer; margin: 0; text-transform: none; letter-spacing: normal; }
+    .form-actions { display: flex; gap: 12px; margin-top: 35px; padding-top: 20px; border-top: 2px solid #f0f0f0; }
+    button { flex: 1; padding: 12px 24px; border: none; border-radius: 6px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-submit { background: linear-gradient(135deg, #a73824 0%, #d46b59 100%); color: white; box-shadow: 0 6px 16px rgba(30, 60, 114, 0.3); }
+    .btn-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(30, 60, 114, 0.4); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-reset { background: #f0f0f0; color: #333; flex: 0.5; }
+    .btn-reset:hover { background: #e0e0e0; }
+    .loading-spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255, 255, 255, 0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 6px; vertical-align: middle; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .status-message { padding: 12px 14px; border-radius: 6px; margin-bottom: 20px; font-size: 15px; font-weight: 500; display: none; }
+    .status-message.show { display: block; }
+    .status-message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    .status-message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    .note { font-size: 13px; color: #666; margin-top: 4px; font-style: italic; }
+    @media (max-width: 768px) { .form-row, .form-row.three { grid-template-columns: 1fr; gap: 15px; } .form-container { margin: 15px auto; border-radius: 8px; } .form-header { padding: 25px 15px; } .form-header h1 { font-size: 24px; } .form-content { padding: 25px 15px; } .form-actions { flex-direction: column; } button { width: 100%; } .btn-reset { flex: 1; } .checkbox-group, .radio-group { gap: 12px; } }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -317,403 +70,282 @@
   <div class="app-wrapper">
    <div class="form-container">
     <div class="form-header">
-     <img src="logo.png" alt="Logo" class="logo"> <!-- เพิ่มโลโก้ -->
+     <img src="logo.png" alt="Logo" class="logo">
      <h1 id="form-title">แบบใบสมัครโรงเรียนสาธิตนานาชาติ</h1>
      <p id="form-subtitle">มหาวิทยาลัยขอนแก่น ประจำปีการศึกษา 2569</p>
     </div>
     <div class="form-content">
      <div id="status-message" class="status-message"></div>
-     <form id="registration-form"><!-- ส่วนที่ 1: ข้อมูลผู้สมัคร -->
-      <div class="section-header">
-       1. ชื่อผู้สมัคร
+     <form id="registration-form">
+      <div class="section-header">1. ชื่อผู้สมัคร</div>
+      <div class="form-row">
+       <div class="form-group"><label for="applicant_prefix">คำนำหน้า (ด.ช./ด.ญ.)</label> <select id="applicant_prefix" name="applicant_prefix"> <option value="">-- เลือก --</option> <option value="ด.ช.">ด.ช.</option> <option value="ด.ญ.">ด.ญ.</option> </select></div>
+       <div class="form-group"><label for="applicant_name" class="label-required">ชื่อ</label> <input type="text" id="applicant_name" name="applicant_name" required></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="applicant_prefix">คำนำหน้า (ด.ช./ด.ญ.)</label> <select id="applicant_prefix" name="applicant_prefix"> <option value="">-- เลือก --</option> <option value="ด.ช.">ด.ช.</option> <option value="ด.ญ.">ด.ญ.</option> </select>
-       </div>
-       <div class="form-group"><label for="applicant_name" class="label-required">ชื่อ</label> <input type="text" id="applicant_name" name="applicant_name" required>
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="applicant_surname" class="label-required">นามสกุล</label> <input type="text" id="applicant_surname" name="applicant_surname" required>
-       </div>
-       <div class="form-group"><label for="applicant_nickname">ชื่อเล่น</label> <input type="text" id="applicant_nickname" name="applicant_nickname">
-       </div>
+       <div class="form-group"><label for="applicant_surname" class="label-required">นามสกุล</label> <input type="text" id="applicant_surname" name="applicant_surname" required></div>
+       <div class="form-group"><label for="applicant_nickname">ชื่อเล่น</label> <input type="text" id="applicant_nickname" name="applicant_nickname"></div>
       </div>
       <div class="form-row full">
        <div class="form-group"><label>ภาษาอังกฤษ</label>
         <div class="form-row">
-         <div class="form-group"><label for="applicant_name_en">Master / Miss</label> <input type="text" id="applicant_name_en" name="applicant_name_en" placeholder="ตัวพิมพ์ใหญ่">
-         </div>
-         <div class="form-group"><label for="applicant_nickname_en">Nickname (ตัวพิมพ์ใหญ่)</label> <input type="text" id="applicant_nickname_en" name="applicant_nickname_en">
-         </div>
+         <div class="form-group"><label for="applicant_name_en">Master / Miss</label> <input type="text" id="applicant_name_en" name="applicant_name_en" placeholder="ตัวพิมพ์ใหญ่"></div>
+         <div class="form-group"><label for="applicant_nickname_en">Nickname (ตัวพิมพ์ใหญ่)</label> <input type="text" id="applicant_nickname_en" name="applicant_nickname_en"></div>
         </div>
        </div>
-      </div><!-- 1.1 ข้อมูลส่วนตัว -->
-      <div class="section-header">
-       1.1 ข้อมูลส่วนตัว
       </div>
+      <div class="section-header">1.1 ข้อมูลส่วนตัว</div>
       <div class="form-row three">
-       <div class="form-group"><label for="date_of_birth" class="label-required">วันเกิด</label> <input type="date" id="date_of_birth" name="date_of_birth" required>
-       </div>
-       <div class="form-group"><label for="age_years">อายุ - ปี</label> <input type="number" id="age_years" name="age_years">
-       </div>
+       <div class="form-group"><label for="date_of_birth" class="label-required">วันเกิด</label> <input type="date" id="date_of_birth" name="date_of_birth" required></div>
+       <div class="form-group"><label for="age_years">อายุ - ปี</label> <input type="number" id="age_years" name="age_years"></div>
        <div class="form-group"><label>เดือน / วัน</label>
-        <div class="form-row"><input type="number" id="age_months" name="age_months" placeholder="เดือน" style="width: 48%; margin-bottom: 0;"> <input type="number" id="age_days" name="age_days" placeholder="วัน" style="width: 48%; margin-bottom: 0;">
-        </div>
+        <div class="form-row"><input type="number" id="age_months" name="age_months" placeholder="เดือน" style="width: 48%; margin-bottom: 0;"> <input type="number" id="age_days" name="age_days" placeholder="วัน" style="width: 48%; margin-bottom: 0;"></div>
        </div>
       </div>
       <div class="form-row three">
-       <div class="form-group"><label for="ethnicity">เชื้อชาติ</label> <input type="text" id="ethnicity" name="ethnicity">
-       </div>
-       <div class="form-group"><label for="nationality">สัญชาติ</label> <input type="text" id="nationality" name="nationality">
-       </div>
-       <div class="form-group"><label for="religion">ศาสนา</label> <input type="text" id="religion" name="religion">
-       </div>
+       <div class="form-group"><label for="ethnicity">เชื้อชาติ</label> <input type="text" id="ethnicity" name="ethnicity"></div>
+       <div class="form-group"><label for="nationality">สัญชาติ</label> <input type="text" id="nationality" name="nationality"></div>
+       <div class="form-group"><label for="religion">ศาสนา</label> <input type="text" id="religion" name="religion"></div>
       </div>
       <div class="form-row three">
-       <div class="form-group"><label for="place_of_birth">สถานที่เกิด</label> <input type="text" id="place_of_birth" name="place_of_birth">
-       </div>
-       <div class="form-group"><label for="birth_province">จังหวัด</label> <input type="text" id="birth_province" name="birth_province">
-       </div>
-       <div class="form-group"><label for="birth_country">ประเทศ</label> <input type="text" id="birth_country" name="birth_country">
-       </div>
+       <div class="form-group"><label for="place_of_birth">สถานที่เกิด</label> <input type="text" id="place_of_birth" name="place_of_birth"></div>
+       <div class="form-group"><label for="birth_province">จังหวัด</label> <input type="text" id="birth_province" name="birth_province"></div>
+       <div class="form-group"><label for="birth_country">ประเทศ</label> <input type="text" id="birth_country" name="birth_country"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="child_order">เป็นบุตรคนที่</label> <input type="number" id="child_order" name="child_order">
-       </div>
-       <div class="form-group"><label for="total_siblings">ในจำนวน (คน)</label> <input type="number" id="total_siblings" name="total_siblings">
-       </div>
-      </div><!-- 1.2 เลขประจำตัวประชาชน -->
-      <div class="section-header">
-       1.2 เลขประจำตัวประชาชน
+       <div class="form-group"><label for="child_order">เป็นบุตรคนที่</label> <input type="number" id="child_order" name="child_order"></div>
+       <div class="form-group"><label for="total_siblings">ในจำนวน (คน)</label> <input type="number" id="total_siblings" name="total_siblings"></div>
+      </div>
+      <div class="section-header">1.2 เลขประจำตัวประชาชน</div>
+      <div class="form-row full">
+       <div class="form-group"><label for="id_number" class="label-required">เลขประจำตัวประชาชน หากไม่มี"(-)"</label> <input type="text" id="id_number" name="id_number" placeholder="X-XXXX-XXXXX-XX-X" required></div>
+      </div>
+      <div class="section-header">1.3 ที่อยู่ปัจจุบัน</div>
+      <div class="form-row">
+       <div class="form-group"><label for="current_address_number">เลขที่</label> <input type="text" id="current_address_number" name="current_address_number"></div>
+       <div class="form-group"><label for="current_moo">หมู่ที่</label> <input type="text" id="current_moo" name="current_moo"></div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="id_number" class="label-required">เลขประจำตัวประชาชน หากไม่มี"(-)"</label> <input type="text" id="id_number" name="id_number" placeholder="X-XXXX-XXXXX-XX-X" required>
-       </div>
-      </div><!-- 1.3 ที่อยู่ปัจจุบัน -->
-      <div class="section-header">
-       1.3 ที่อยู่ปัจจุบัน
+       <div class="form-group"><label for="current_village">หมู่บ้าน</label> <input type="text" id="current_village" name="current_village"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="current_address_number">เลขที่</label> <input type="text" id="current_address_number" name="current_address_number">
-       </div>
-       <div class="form-group"><label for="current_moo">หมู่ที่</label> <input type="text" id="current_moo" name="current_moo">
-       </div>
-      </div>
-      <div class="form-row full">
-       <div class="form-group"><label for="current_village">หมู่บ้าน</label> <input type="text" id="current_village" name="current_village">
-       </div>
+       <div class="form-group"><label for="current_subdistrict">ตำบล</label> <input type="text" id="current_subdistrict" name="current_subdistrict"></div>
+       <div class="form-group"><label for="current_street">ถนน</label> <input type="text" id="current_street" name="current_street"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="current_subdistrict">ตำบล</label> <input type="text" id="current_subdistrict" name="current_subdistrict">
-       </div>
-       <div class="form-group"><label for="current_street">ถนน</label> <input type="text" id="current_street" name="current_street">
-       </div>
+       <div class="form-group"><label for="current_district">อำเภอ</label> <input type="text" id="current_district" name="current_district"></div>
+       <div class="form-group"><label for="current_province">จังหวัด</label> <input type="text" id="current_province" name="current_province"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="current_district">อำเภอ</label> <input type="text" id="current_district" name="current_district">
-       </div>
-       <div class="form-group"><label for="current_province">จังหวัด</label> <input type="text" id="current_province" name="current_province">
-       </div>
+       <div class="form-group"><label for="current_postal_code">รหัสไปรษณีย์</label> <input type="text" id="current_postal_code" name="current_postal_code"></div>
+       <div class="form-group"><label for="current_phone">โทรศัพท์</label> <input type="tel" id="current_phone" name="current_phone"></div>
       </div>
-      <div class="form-row">
-       <div class="form-group"><label for="current_postal_code">รหัสไปรษณีย์</label> <input type="text" id="current_postal_code" name="current_postal_code">
-       </div>
-       <div class="form-group"><label for="current_phone">โทรศัพท์</label> <input type="tel" id="current_phone" name="current_phone">
-       </div>
-      </div><!-- 1.4 โรคประจำตัว -->
-      <div class="section-header">
-       1.4 โรคประจำตัว
-      </div>
+      <div class="section-header">1.4 โรคประจำตัว</div>
       <div class="form-group"><label>โรคประจำตัว</label>
        <div class="radio-group">
-        <div class="radio-item"><input type="radio" id="disease_no" name="chronic_disease" value="ไม่มี"> <label for="disease_no" class="radio-label">ไม่มี</label>
-        </div>
-        <div class="radio-item"><input type="radio" id="disease_yes" name="chronic_disease" value="มี"> <label for="disease_yes" class="radio-label">มี</label>
-        </div>
+        <div class="radio-item"><input type="radio" id="disease_no" name="chronic_disease" value="ไม่มี"> <label for="disease_no" class="radio-label">ไม่มี</label></div>
+        <div class="radio-item"><input type="radio" id="disease_yes" name="chronic_disease" value="มี"> <label for="disease_yes" class="radio-label">มี</label></div>
        </div>
       </div>
       <div class="form-row full">
        <div class="form-group"><label for="chronic_disease_details">โปรดระบุ (หากมี)</label> <input type="text" id="chronic_disease_details" name="chronic_disease_details">
-        <div class="note">
-           <div class="form-group"
-         * โปรดแนบเอกสารทางการแพทย์ หากมี
-         <label for="applicant_file">เลือกไฟล์ที่จะอัปโหลด</label>
-    <input type="file" id="applicant_file" name="applicant_file" accept=".jpg, .jpeg, .png, .pdf ">
-    <div class="note">
-      * รองรับไฟล์ .jpg, .jpeg, .png, .pdf เท่านั้น
+        <div class="note">* โปรดแนบเอกสารทางการแพทย์ หากมี</div>
+        <div class="form-group" style="margin-top:10px;">
+           <label for="medical_file">เลือกไฟล์เอกสารแพทย์</label>
+           <input type="file" id="medical_file" name="medical_file" accept=".jpg, .jpeg, .png, .pdf">
+           <div class="note">* รองรับไฟล์ .jpg, .jpeg, .png, .pdf เท่านั้น</div>
         </div>
        </div>
-      <div class="section-header">
-       1.5 โรงเรียนเดิม
       </div>
+
+      <div class="section-header">1.5 โรงเรียนเดิม</div>
       <div class="form-row full">
-       <div class="form-group"><label for="old_school_name">ชื่อโรงเรียน</label> <input type="text" id="old_school_name" name="old_school_name">
-       </div>
+       <div class="form-group"><label for="old_school_name">ชื่อโรงเรียน</label> <input type="text" id="old_school_name" name="old_school_name"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="old_school_district">อำเภอ</label> <input type="text" id="old_school_district" name="old_school_district">
-       </div>
-       <div class="form-group"><label for="old_school_province">จังหวัด</label> <input type="text" id="old_school_province" name="old_school_province">
-       </div>
-       </div>
-      <div class="section-header">
-  1.6 อัปโหลดรูปถ่าย ขนาด 1 นิ้ว
-</div>
-<div class="form-row full">
-  <div class="form-group">
-    <label for="applicant_file">เลือกไฟล์ที่จะอัปโหลด</label>
-    <input type="file" id="applicant_file" name="applicant_file" accept=".jpg, .jpeg, .png, .pdf ">
-    <div class="note">
-      * รองรับไฟล์ .jpg, .jpeg, .png, .pdf เท่านั้น
-    </div>
-  </div>
-</div>
-      </div><!-- ส่วนที่ 2: ข้อมูลบิดา -->
-      <div class="section-header">
-       2. ข้อมูลบิดา
+       <div class="form-group"><label for="old_school_district">อำเภอ</label> <input type="text" id="old_school_district" name="old_school_district"></div>
+       <div class="form-group"><label for="old_school_province">จังหวัด</label> <input type="text" id="old_school_province" name="old_school_province"></div>
+      </div>
+
+      <div class="section-header">1.6 อัปโหลดรูปถ่าย ขนาด 1 นิ้ว</div>
+      <div class="form-row full">
+        <div class="form-group">
+          <label for="applicant_photo">เลือกไฟล์รูปถ่าย</label>
+          <input type="file" id="applicant_photo" name="applicant_photo" accept=".jpg, .jpeg, .png, .pdf">
+          <div class="note">* รองรับไฟล์ .jpg, .jpeg, .png, .pdf เท่านั้น</div>
+        </div>
+      </div>
+
+      <div class="section-header">2. ข้อมูลบิดา</div>
+      <div class="form-row">
+       <div class="form-group"><label for="father_name">ชื่อ</label> <input type="text" id="father_name" name="father_name"></div>
+       <div class="form-group"><label for="father_surname">นามสกุล</label> <input type="text" id="father_surname" name="father_surname"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="father_name">ชื่อ</label> <input type="text" id="father_name" name="father_name">
-       </div>
-       <div class="form-group"><label for="father_surname">นามสกุล</label> <input type="text" id="father_surname" name="father_surname">
-       </div>
+       <div class="form-group"><label for="father_age">อายุ (ปี)</label> <input type="number" id="father_age" name="father_age"></div>
+       <div class="form-group"><label for="father_name_en">ภาษาอังกฤษ (Mr.)</label> <input type="text" id="father_name_en" name="father_name_en"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="father_age">อายุ (ปี)</label> <input type="number" id="father_age" name="father_age">
-       </div>
-       <div class="form-group"><label for="father_name_en">ภาษาอังกฤษ (Mr.)</label> <input type="text" id="father_name_en" name="father_name_en">
-       </div>
+       <div class="form-group"><label for="father_home_phone">โทรศัพท์บ้าน</label> <input type="tel" id="father_home_phone" name="father_home_phone"></div>
+       <div class="form-group"><label for="father_mobile_phone">มือถือ</label> <input type="tel" id="father_mobile_phone" name="father_mobile_phone"></div>
       </div>
-      <div class="form-row">
-       <div class="form-group"><label for="father_home_phone">โทรศัพท์บ้าน</label> <input type="tel" id="father_home_phone" name="father_home_phone">
-       </div>
-       <div class="form-group"><label for="father_mobile_phone">มือถือ</label> <input type="tel" id="father_mobile_phone" name="father_mobile_phone">
-       </div>
-      </div><!-- 2.1 วุฒิการศึกษาบิดา -->
-      <div class="section-header">
-       2.1 วุฒิการศึกษาสูงสุด
-      </div>
+      <div class="section-header">2.1 วุฒิการศึกษาสูงสุด</div>
       <div class="form-group"><label>วุฒิการศึกษา</label>
        <div class="checkbox-group">
-        <div class="checkbox-item"><input type="radio" id="f_edu_1" name="father_education" value="ปริญญาเอก"> <label for="f_edu_1" class="checkbox-label">ปริญญาเอก</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_2" name="father_education" value="ปริญญาโท"> <label for="f_edu_2" class="checkbox-label">ปริญญาโท</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_3" name="father_education" value="ปริญญาตรี"> <label for="f_edu_3" class="checkbox-label">ปริญญาตรี</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_4" name="father_education" value="ปวส."> <label for="f_edu_4" class="checkbox-label">ปวส.</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_5" name="father_education" value="ปวช."> <label for="f_edu_5" class="checkbox-label">ปวช.</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_6" name="father_education" value="มัธยมศึกษา"> <label for="f_edu_6" class="checkbox-label">มัธยมศึกษา</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_7" name="father_education" value="ประถมศึกษา"> <label for="f_edu_7" class="checkbox-label">ประถมศึกษา</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_edu_8" name="father_education" value="อื่น ๆ"> <label for="f_edu_8" class="checkbox-label">อื่น ๆ</label>
-        </div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_1" name="father_education" value="ปริญญาเอก"> <label for="f_edu_1" class="checkbox-label">ปริญญาเอก</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_2" name="father_education" value="ปริญญาโท"> <label for="f_edu_2" class="checkbox-label">ปริญญาโท</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_3" name="father_education" value="ปริญญาตรี"> <label for="f_edu_3" class="checkbox-label">ปริญญาตรี</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_4" name="father_education" value="ปวส."> <label for="f_edu_4" class="checkbox-label">ปวส.</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_5" name="father_education" value="ปวช."> <label for="f_edu_5" class="checkbox-label">ปวช.</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_6" name="father_education" value="มัธยมศึกษา"> <label for="f_edu_6" class="checkbox-label">มัธยมศึกษา</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_7" name="father_education" value="ประถมศึกษา"> <label for="f_edu_7" class="checkbox-label">ประถมศึกษา</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_edu_8" name="father_education" value="อื่น ๆ"> <label for="f_edu_8" class="checkbox-label">อื่น ๆ</label></div>
        </div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="father_education_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="father_education_other" name="father_education_other">
-       </div>
-      </div><!-- 2.2 อาชีพบิดา -->
-      <div class="section-header">
-       2.2 อาชีพ
+       <div class="form-group"><label for="father_education_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="father_education_other" name="father_education_other"></div>
       </div>
+      <div class="section-header">2.2 อาชีพ</div>
       <div class="form-group"><label>อาชีพ</label>
        <div class="checkbox-group">
-        <div class="checkbox-item"><input type="radio" id="f_occ_1" name="father_occupation" value="รับราชการ"> <label for="f_occ_1" class="checkbox-label">รับราชการ</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_occ_2" name="father_occupation" value="ธุรกิจส่วนตัว"> <label for="f_occ_2" class="checkbox-label">ธุรกิจส่วนตัว</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_occ_3" name="father_occupation" value="พนักงานบริษัท"> <label for="f_occ_3" class="checkbox-label">พนักงานบริษัท</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="f_occ_4" name="father_occupation" value="อื่น ๆ"> <label for="f_occ_4" class="checkbox-label">อื่น ๆ</label>
-        </div>
+        <div class="checkbox-item"><input type="radio" id="f_occ_1" name="father_occupation" value="รับราชการ"> <label for="f_occ_1" class="checkbox-label">รับราชการ</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_occ_2" name="father_occupation" value="ธุรกิจส่วนตัว"> <label for="f_occ_2" class="checkbox-label">ธุรกิจส่วนตัว</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_occ_3" name="father_occupation" value="พนักงานบริษัท"> <label for="f_occ_3" class="checkbox-label">พนักงานบริษัท</label></div>
+        <div class="checkbox-item"><input type="radio" id="f_occ_4" name="father_occupation" value="อื่น ๆ"> <label for="f_occ_4" class="checkbox-label">อื่น ๆ</label></div>
        </div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="father_occupation_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="father_occupation_other" name="father_occupation_other">
-       </div>
-      </div><!-- 2.3 สถานที่ทำงานบิดา -->
-      <div class="section-header">
-       2.3 สถานที่ทำงาน
+       <div class="form-group"><label for="father_occupation_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="father_occupation_other" name="father_occupation_other"></div>
+      </div>
+      <div class="section-header">2.3 สถานที่ทำงาน</div>
+      <div class="form-row full">
+       <div class="form-group"><label for="father_workplace">สถานที่ทำงาน</label> <input type="text" id="father_workplace" name="father_workplace"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="father_position">ตำแหน่ง</label> <input type="text" id="father_position" name="father_position"></div>
+       <div class="form-group"><label for="father_department">แผนก</label> <input type="text" id="father_department" name="father_department"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="father_address_number">เลขที่</label> <input type="text" id="father_address_number" name="father_address_number"></div>
+       <div class="form-group"><label for="father_street">ถนน</label> <input type="text" id="father_street" name="father_street"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="father_subdistrict">ตำบล</label> <input type="text" id="father_subdistrict" name="father_subdistrict"></div>
+       <div class="form-group"><label for="father_district">อำเภอ</label> <input type="text" id="father_district" name="father_district"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="father_province">จังหวัด</label> <input type="text" id="father_province" name="father_province"></div>
+       <div class="form-group"><label for="father_postal_code">รหัสไปรษณีย์</label> <input type="text" id="father_postal_code" name="father_postal_code"></div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="father_workplace">สถานที่ทำงาน</label> <input type="text" id="father_workplace" name="father_workplace">
-       </div>
+       <div class="form-group"><label for="father_work_phone">โทรศัพท์</label> <input type="tel" id="father_work_phone" name="father_work_phone"></div>
+      </div>
+
+      <div class="section-header">3. ข้อมูลมารดา</div>
+      <div class="form-row">
+       <div class="form-group"><label for="mother_prefix">คำนำหน้า (Miss/Mrs.)</label> <input type="text" id="mother_prefix" name="mother_prefix"></div>
+       <div class="form-group"><label for="mother_name">ชื่อ</label> <input type="text" id="mother_name" name="mother_name"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="father_position">ตำแหน่ง</label> <input type="text" id="father_position" name="father_position">
-       </div>
-       <div class="form-group"><label for="father_department">แผนก</label> <input type="text" id="father_department" name="father_department">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="father_address_number">เลขที่</label> <input type="text" id="father_address_number" name="father_address_number">
-       </div>
-       <div class="form-group"><label for="father_street">ถนน</label> <input type="text" id="father_street" name="father_street">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="father_subdistrict">ตำบล</label> <input type="text" id="father_subdistrict" name="father_subdistrict">
-       </div>
-       <div class="form-group"><label for="father_district">อำเภอ</label> <input type="text" id="father_district" name="father_district">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="father_province">จังหวัด</label> <input type="text" id="father_province" name="father_province">
-       </div>
-       <div class="form-group"><label for="father_postal_code">รหัสไปรษณีย์</label> <input type="text" id="father_postal_code" name="father_postal_code">
-       </div>
+       <div class="form-group"><label for="mother_surname">นามสกุล</label> <input type="text" id="mother_surname" name="mother_surname"></div>
+       <div class="form-group"><label for="mother_age">อายุ (ปี)</label> <input type="number" id="mother_age" name="mother_age"></div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="father_work_phone">โทรศัพท์</label> <input type="tel" id="father_work_phone" name="father_work_phone">
-       </div>
-      </div><!-- ส่วนที่ 3: ข้อมูลมารดา -->
-      <div class="section-header">
-       3. ข้อมูลมารดา
+       <div class="form-group"><label for="mother_name_en">ภาษาอังกฤษ</label> <input type="text" id="mother_name_en" name="mother_name_en"></div>
       </div>
       <div class="form-row">
-       <div class="form-group"><label for="mother_prefix">คำนำหน้า (Miss/Mrs.)</label> <input type="text" id="mother_prefix" name="mother_prefix">
-       </div>
-       <div class="form-group"><label for="mother_name">ชื่อ</label> <input type="text" id="mother_name" name="mother_name">
-       </div>
+       <div class="form-group"><label for="mother_home_phone">โทรศัพท์บ้าน</label> <input type="tel" id="mother_home_phone" name="mother_home_phone"></div>
+       <div class="form-group"><label for="mother_mobile_phone">มือถือ</label> <input type="tel" id="mother_mobile_phone" name="mother_mobile_phone"></div>
       </div>
-      <div class="form-row">
-       <div class="form-group"><label for="mother_surname">นามสกุล</label> <input type="text" id="mother_surname" name="mother_surname">
-       </div>
-       <div class="form-group"><label for="mother_age">อายุ (ปี)</label> <input type="number" id="mother_age" name="mother_age">
-       </div>
-      </div>
-      <div class="form-row full">
-       <div class="form-group"><label for="mother_name_en">ภาษาอังกฤษ</label> <input type="text" id="mother_name_en" name="mother_name_en">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="mother_home_phone">โทรศัพท์บ้าน</label> <input type="tel" id="mother_home_phone" name="mother_home_phone">
-       </div>
-       <div class="form-group"><label for="mother_mobile_phone">มือถือ</label> <input type="tel" id="mother_mobile_phone" name="mother_mobile_phone">
-       </div>
-      </div><!-- 3.1 วุฒิการศึกษามารดา -->
-      <div class="section-header">
-       3.1 วุฒิการศึกษาสูงสุด
-      </div>
+      <div class="section-header">3.1 วุฒิการศึกษาสูงสุด</div>
       <div class="form-group"><label>วุฒิการศึกษา</label>
        <div class="checkbox-group">
-        <div class="checkbox-item"><input type="radio" id="m_edu_1" name="mother_education" value="ปริญญาเอก"> <label for="m_edu_1" class="checkbox-label">ปริญญาเอก</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_2" name="mother_education" value="ปริญญาโท"> <label for="m_edu_2" class="checkbox-label">ปริญญาโท</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_3" name="mother_education" value="ปริญญาตรี"> <label for="m_edu_3" class="checkbox-label">ปริญญาตรี</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_4" name="mother_education" value="ปวส."> <label for="m_edu_4" class="checkbox-label">ปวส.</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_5" name="mother_education" value="ปวช."> <label for="m_edu_5" class="checkbox-label">ปวช.</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_6" name="mother_education" value="มัธยมศึกษา"> <label for="m_edu_6" class="checkbox-label">มัธยมศึกษา</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_7" name="mother_education" value="ประถมศึกษา"> <label for="m_edu_7" class="checkbox-label">ประถมศึกษา</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_edu_8" name="mother_education" value="อื่น ๆ"> <label for="m_edu_8" class="checkbox-label">อื่น ๆ</label>
-        </div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_1" name="mother_education" value="ปริญญาเอก"> <label for="m_edu_1" class="checkbox-label">ปริญญาเอก</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_2" name="mother_education" value="ปริญญาโท"> <label for="m_edu_2" class="checkbox-label">ปริญญาโท</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_3" name="mother_education" value="ปริญญาตรี"> <label for="m_edu_3" class="checkbox-label">ปริญญาตรี</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_4" name="mother_education" value="ปวส."> <label for="m_edu_4" class="checkbox-label">ปวส.</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_5" name="mother_education" value="ปวช."> <label for="m_edu_5" class="checkbox-label">ปวช.</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_6" name="mother_education" value="มัธยมศึกษา"> <label for="m_edu_6" class="checkbox-label">มัธยมศึกษา</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_7" name="mother_education" value="ประถมศึกษา"> <label for="m_edu_7" class="checkbox-label">ประถมศึกษา</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_edu_8" name="mother_education" value="อื่น ๆ"> <label for="m_edu_8" class="checkbox-label">อื่น ๆ</label></div>
        </div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="mother_education_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="mother_education_other" name="mother_education_other">
-       </div>
-      </div><!-- 3.2 อาชีพมารดา -->
-      <div class="section-header">
-       3.2 อาชีพ
+       <div class="form-group"><label for="mother_education_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="mother_education_other" name="mother_education_other"></div>
       </div>
+      <div class="section-header">3.2 อาชีพ</div>
       <div class="form-group"><label>อาชีพ</label>
        <div class="checkbox-group">
-        <div class="checkbox-item"><input type="radio" id="m_occ_1" name="mother_occupation" value="รับราชการ"> <label for="m_occ_1" class="checkbox-label">รับราชการ</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_occ_2" name="mother_occupation" value="ธุรกิจส่วนตัว"> <label for="m_occ_2" class="checkbox-label">ธุรกิจส่วนตัว</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_occ_3" name="mother_occupation" value="พนักงานบริษัท"> <label for="m_occ_3" class="checkbox-label">พนักงานบริษัท</label>
-        </div>
-        <div class="checkbox-item"><input type="radio" id="m_occ_4" name="mother_occupation" value="อื่น ๆ"> <label for="m_occ_4" class="checkbox-label">อื่น ๆ</label>
-        </div>
+        <div class="checkbox-item"><input type="radio" id="m_occ_1" name="mother_occupation" value="รับราชการ"> <label for="m_occ_1" class="checkbox-label">รับราชการ</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_occ_2" name="mother_occupation" value="ธุรกิจส่วนตัว"> <label for="m_occ_2" class="checkbox-label">ธุรกิจส่วนตัว</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_occ_3" name="mother_occupation" value="พนักงานบริษัท"> <label for="m_occ_3" class="checkbox-label">พนักงานบริษัท</label></div>
+        <div class="checkbox-item"><input type="radio" id="m_occ_4" name="mother_occupation" value="อื่น ๆ"> <label for="m_occ_4" class="checkbox-label">อื่น ๆ</label></div>
        </div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="mother_occupation_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="mother_occupation_other" name="mother_occupation_other">
-       </div>
-      </div><!-- 3.3 สถานที่ทำงานมารดา -->
-      <div class="section-header">
-       3.3 สถานที่ทำงาน
+       <div class="form-group"><label for="mother_occupation_other">ระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="mother_occupation_other" name="mother_occupation_other"></div>
+      </div>
+      <div class="section-header">3.3 สถานที่ทำงาน</div>
+      <div class="form-row full">
+       <div class="form-group"><label for="mother_workplace">สถานที่ทำงาน</label> <input type="text" id="mother_workplace" name="mother_workplace"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="mother_position">ตำแหน่ง</label> <input type="text" id="mother_position" name="mother_position"></div>
+       <div class="form-group"><label for="mother_department">แผนก</label> <input type="text" id="mother_department" name="mother_department"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="mother_address_number">เลขที่</label> <input type="text" id="mother_address_number" name="mother_address_number"></div>
+       <div class="form-group"><label for="mother_street">ถนน</label> <input type="text" id="mother_street" name="mother_street"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="mother_subdistrict">ตำบล</label> <input type="text" id="mother_subdistrict" name="mother_subdistrict"></div>
+       <div class="form-group"><label for="mother_district">อำเภอ</label> <input type="text" id="mother_district" name="mother_district"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="mother_province">จังหวัด</label> <input type="text" id="mother_province" name="mother_province"></div>
+       <div class="form-group"><label for="mother_postal_code">รหัสไปรษณีย์</label> <input type="text" id="mother_postal_code" name="mother_postal_code"></div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="mother_workplace">สถานที่ทำงาน</label> <input type="text" id="mother_workplace" name="mother_workplace">
-       </div>
+       <div class="form-group"><label for="mother_work_phone">โทรศัพท์</label> <input type="tel" id="mother_work_phone" name="mother_work_phone"></div>
       </div>
-      <div class="form-row">
-       <div class="form-group"><label for="mother_position">ตำแหน่ง</label> <input type="text" id="mother_position" name="mother_position">
-       </div>
-       <div class="form-group"><label for="mother_department">แผนก</label> <input type="text" id="mother_department" name="mother_department">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="mother_address_number">เลขที่</label> <input type="text" id="mother_address_number" name="mother_address_number">
-       </div>
-       <div class="form-group"><label for="mother_street">ถนน</label> <input type="text" id="mother_street" name="mother_street">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="mother_subdistrict">ตำบล</label> <input type="text" id="mother_subdistrict" name="mother_subdistrict">
-       </div>
-       <div class="form-group"><label for="mother_district">อำเภอ</label> <input type="text" id="mother_district" name="mother_district">
-       </div>
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="mother_province">จังหวัด</label> <input type="text" id="mother_province" name="mother_province">
-       </div>
-       <div class="form-group"><label for="mother_postal_code">รหัสไปรษณีย์</label> <input type="text" id="mother_postal_code" name="mother_postal_code">
-       </div>
-      </div>
-      <div class="form-row full">
-       <div class="form-group"><label for="mother_work_phone">โทรศัพท์</label> <input type="tel" id="mother_work_phone" name="mother_work_phone">
-       </div>
-      </div><!-- ส่วนที่ 4: คำยินยอม -->
-      <div class="section-header">
-       4. คำยินยอมของผู้ปกครอง
-      </div>
+
+      <div class="section-header">4. คำยินยอมของผู้ปกครอง</div>
       <div class="form-row full">
        <div class="form-group"><label for="parent_consent_name">ข้าพเจ้า (นาย/นาง/นางสาว)</label> <input type="text" id="parent_consent_name" name="parent_consent_name">
-        <div class="note">
-         ยินดีให้ความร่วมมือกับโรงเรียนทุกประการ เนื่องจากทราบว่าโรงเรียนสาธิตนานาชาติ มิใช่โรงเรียนที่รัฐจัดบริการในเขตพื้นที่ และมหาวิทยาลัยอาจมีการเรียกเก็บค่าใช้บริการเพิ่มเติมในอนาคต
-        </div>
-       </div>
-      </div><!-- ส่วนที่ 5: คำรับรอง -->
-      <div class="section-header">
-       5. คำรับรองของบิดา มารดา และผู้ปกครอง
-      </div>
-      <div class="form-row">
-       <div class="form-group"><label for="guardian_name">ข้าพเจ้า (ชื่อ-นามสกุล)</label> <input type="text" id="guardian_name" name="guardian_name">
-       </div>
-       <div class="form-group"><label for="acceptance_grade">ขอรับสมัครเข้าเรียน ชั้น</label> <input type="text" id="acceptance_grade" name="acceptance_grade">
+        <div class="note">ยินดีให้ความร่วมมือกับโรงเรียนทุกประการ เนื่องจากทราบว่าโรงเรียนสาธิตนานาชาติ มิใช่โรงเรียนที่รัฐจัดบริการในเขตพื้นที่ และมหาวิทยาลัยอาจมีการเรียกเก็บค่าใช้บริการเพิ่มเติมในอนาคต</div>
        </div>
       </div>
+
+      <div class="section-header">5. คำรับรองของบิดา มารดา และผู้ปกครอง</div>
       <div class="form-row">
-       <div class="form-group"><label for="acceptance_year">ประจำปีการศึกษา</label> <input type="text" id="acceptance_year" name="acceptance_year" value="2568">
-       </div>
-       <div class="form-group"><label for="guardian_relationship">ผู้ยื่นใบสมัครเกี่ยวข้องกับผู้สมัครในฐานะ</label> <select id="guardian_relationship" name="guardian_relationship"> <option value="">-- เลือก --</option> <option value="บิดา">บิดา</option> <option value="มารดา">มารดา</option> <option value="ผู้ได้รับมอบหมาย">ผู้ได้รับมอบหมาย</option> <option value="อื่น ๆ">อื่น ๆ</option> </select>
-       </div>
+       <div class="form-group"><label for="guardian_name">ข้าพเจ้า (ชื่อ-นามสกุล)</label> <input type="text" id="guardian_name" name="guardian_name"></div>
+       <div class="form-group"><label for="acceptance_grade">ขอรับสมัครเข้าเรียน ชั้น</label> <input type="text" id="acceptance_grade" name="acceptance_grade"></div>
+      </div>
+      <div class="form-row">
+       <div class="form-group"><label for="acceptance_year">ประจำปีการศึกษา</label> <input type="text" id="acceptance_year" name="acceptance_year" value="2568"></div>
+       <div class="form-group"><label for="guardian_relationship">ผู้ยื่นใบสมัครเกี่ยวข้องกับผู้สมัครในฐานะ</label> <select id="guardian_relationship" name="guardian_relationship"> <option value="">-- เลือก --</option> <option value="บิดา">บิดา</option> <option value="มารดา">มารดา</option> <option value="ผู้ได้รับมอบหมาย">ผู้ได้รับมอบหมาย</option> <option value="อื่น ๆ">อื่น ๆ</option> </select></div>
       </div>
       <div class="form-row full">
-       <div class="form-group"><label for="guardian_relationship_other">โปรดระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="guardian_relationship_other" name="guardian_relationship_other">
-       </div>
-      </div><!-- ปุ่มส่ง -->
-      <div class="form-actions"><button type="submit" class="btn-submit" id="submit-btn"> <span id="submit-text">ส่งใบสมัคร</span> </button> <button type="reset" class="btn-reset">ล้างข้อมูล</button>
+       <div class="form-group"><label for="guardian_relationship_other">โปรดระบุ (หากเลือก อื่น ๆ)</label> <input type="text" id="guardian_relationship_other" name="guardian_relationship_other"></div>
+      </div>
+
+      <div class="form-actions">
+          <button type="submit" class="btn-submit" id="submit-btn"><span id="submit-text">ส่งใบสมัคร</span></button> 
+          <button type="reset" class="btn-reset">ล้างข้อมูล</button>
       </div>
      </form>
     </div>
    </div>
   </div>
+
   <script>
+    // ============================================================
+    // 📢 URL ของคุณถูกใส่ไว้ตรงนี้เรียบร้อยแล้วครับ ใช้งานได้เลย!
+    // ============================================================
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx88HBztOie2Iych5GwtRvDd4rKc5k44OGLOaARa3Ve4rM8i6v4hKVqFhNsYckJtIm81g/exec';
+    // ============================================================
+
+    // --- Configuration เดิม (เก็บไว้เพื่อให้รองรับ SDK) ---
     let allRecords = [];
     const defaultConfig = {
       form_title: "แบบใบสมัครโรงเรียนสาธิตนานาชาติ",
@@ -721,12 +353,7 @@
       submit_button_text: "ส่งใบสมัคร"
     };
 
-    const dataHandler = {
-      onDataChanged(data) {
-        allRecords = data;
-      }
-    };
-
+    const dataHandler = { onDataChanged(data) { allRecords = data; } };
     const elementConfig = {
       defaultConfig,
       onConfigChange: async (config) => {
@@ -734,12 +361,7 @@
         document.getElementById('form-subtitle').textContent = config.form_subtitle || defaultConfig.form_subtitle;
         document.getElementById('submit-text').textContent = config.submit_button_text || defaultConfig.submit_button_text;
       },
-      mapToCapabilities: (config) => ({
-        recolorables: [],
-        borderables: [],
-        fontEditable: undefined,
-        fontSizeable: undefined
-      }),
+      mapToCapabilities: (config) => ({ recolorables: [], borderables: [], fontEditable: undefined, fontSizeable: undefined }),
       mapToEditPanelValues: (config) => new Map([
         ["form_title", config.form_title || defaultConfig.form_title],
         ["form_subtitle", config.form_subtitle || defaultConfig.form_subtitle],
@@ -748,81 +370,84 @@
     };
 
     async function initializeApp() {
-      if (window.dataSdk) {
-        const initResult = await window.dataSdk.init(dataHandler);
-        if (!initResult.isOk) {
-          console.error("Failed to initialize Data SDK");
-        }
-      }
+      if (window.dataSdk) await window.dataSdk.init(dataHandler);
+      if (window.elementSdk) window.elementSdk.init(elementConfig);
+    }
 
-      if (window.elementSdk) {
-        window.elementSdk.init(elementConfig);
+    // --- ส่วนการส่งฟอร์ม (Form Submission) ---
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const submitBtn = document.getElementById('submit-btn');
+      const submitText = document.getElementById('submit-text');
+      const originalText = submitText.textContent;
+
+      submitBtn.disabled = true;
+      submitText.innerHTML = '<span class="loading-spinner"></span>กำลังส่ง...';
+      showMessage('กำลังอัปโหลดข้อมูลและไฟล์ โปรดรอสักครู่...', '');
+
+      try {
+        const formData = new FormData(form);
+        const obj = {};
+
+        // แปลงข้อมูลและไฟล์
+        for (const [key, value] of formData.entries()) {
+          if (value instanceof File && value.name) {
+             obj[key] = await getBase64(value);
+          } else {
+             obj[key] = value;
+          }
+        }
+
+        // ส่งไป Google Sheet
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify(obj)
+        });
+        
+        const result = await response.json();
+
+        if (result.result === 'success') {
+           showMessage('✓ ส่งใบสมัครสำเร็จเรียบร้อยแล้ว', 'success');
+           form.reset();
+           window.scrollTo(0, 0);
+        } else {
+           throw new Error(result.error);
+        }
+
+      } catch (error) {
+        console.error(error);
+        showMessage('✗ เกิดข้อผิดพลาด: ' + error.message, 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitText.textContent = originalText;
       }
     }
 
+    // Helper: แปลงไฟล์เป็น Base64
+    function getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve({ data: reader.result.split(',')[1], mimeType: file.type, name: file.name });
+        reader.onerror = error => reject(error);
+      });
+    }
+
+    // Helper: แสดงข้อความแจ้งเตือน
     function showMessage(message, type) {
       const messageEl = document.getElementById('status-message');
       messageEl.textContent = message;
       messageEl.className = `status-message show ${type}`;
-      
       if (type === 'success') {
-        setTimeout(() => {
-          messageEl.classList.remove('show');
-        }, 4000);
+        setTimeout(() => { messageEl.classList.remove('show'); }, 4000);
       }
     }
-
-async function handleFormSubmit(e) {
-  e.preventDefault();
-
-  const form = document.getElementById('registration-form');
-  const submitBtn = document.getElementById('submit-btn');
-  const submitText = document.getElementById('submit-text');
-  const originalText = submitText.textContent;
-
-  submitBtn.disabled = true;
-  submitText.innerHTML = '<span class="loading-spinner"></span>กำลังส่ง...';
-
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch(
-      'https://script.google.com/macros/s/PUT_YOUR_SCRIPT_ID/exec',
-      {
-        method: 'POST',
-        body: formData   // ✅ สำคัญมาก
-      }
-    );
-
-    const text = await response.text();
-
-    if (text === 'SUCCESS') {
-      showMessage('✓ ส่งใบสมัครสำเร็จ', 'success');
-      form.reset();
-    } else {
-      showMessage('✗ เกิดข้อผิดพลาด: ' + text, 'error');
-    }
-
-  } catch (err) {
-    console.error(err);
-    showMessage('✗ ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์', 'error');
-  }
-
-  submitBtn.disabled = false;
-  submitText.textContent = originalText;
-}
-
-document
-  .getElementById('registration-form')
-  .addEventListener('submit', handleFormSubmit);
-
-
-    
 
     document.getElementById('registration-form').addEventListener('submit', handleFormSubmit);
-
     initializeApp();
-     
 
   </script>
+ </body>
 </html>
